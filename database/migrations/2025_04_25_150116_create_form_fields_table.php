@@ -11,11 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('forms', function (Blueprint $table) {
+        Schema::create('form_fields', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('form_id')->constrained('forms')->onDelete('cascade');
+            $table->string('type');
             $table->string('name');
-            $table->text('description');
-            $table->string('action_url');
+            $table->string('class')->nullable();
+            $table->boolean('required')->default(false);
+            $table->integer('order')->default(0);
             $table->timestamps();
         });
     }
@@ -25,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('forms');
+        Schema::dropIfExists('form_fields');
     }
 };
