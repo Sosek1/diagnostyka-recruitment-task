@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\FormFieldController;
 use App\Http\Controllers\Api\FormRenderController;
 
 Route::prefix('forms')->group(function () {
+    Route::get('/', [FormController::class, 'index']);
     Route::post('/', [FormController::class, 'store']);
     Route::get('/{form}', [FormController::class, 'show']);
 

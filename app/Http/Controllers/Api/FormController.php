@@ -9,6 +9,12 @@ use Illuminate\Http\Request;
 
 class FormController extends Controller
 {
+    public function index()
+    {
+        $forms = Form::with('fields')->get();
+
+        return response()->json($forms);
+    }
     public function store(Request $request)
     {
         $validated = $request->validate([
