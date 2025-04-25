@@ -5,17 +5,9 @@ import {
     TableHead,
     TableHeader,
     TableRow
-} from "@/components/ui/table"
-import {
-    NavigationMenu,
-    NavigationMenuItem,
-    NavigationMenuList,
-    navigationMenuTriggerStyle
-} from "@/components/ui/navigation-menu";
-import {Link, usePage} from "@inertiajs/react";
-import {cn} from "@/lib/utils";
-import {Icon} from "@/components/icon";
-import {NavItem, SharedData} from "@/types";
+} from "@/components/ui/table";
+import { usePage } from "@inertiajs/react";
+import { NavItem, SharedData } from "@/types";
 import {Plus, LayoutGrid} from "lucide-react";
 import { Button } from "@/components/ui/button"
 

@@ -11,6 +11,10 @@ Route::get('/forms', function () {
     return Inertia::render('forms');
 })->name('forms');
 
+Route::get('/forms/add', function () {
+    return Inertia::render('addForm');
+})->name('forms.add');
+
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('dashboard', function () {
         return Inertia::render('dashboard');
