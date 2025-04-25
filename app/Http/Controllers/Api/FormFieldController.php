@@ -12,15 +12,23 @@ class FormFieldController extends Controller
     public function store(Request $request, Form $form)
     {
         $validated = $request->validate([
-            'type' => 'required|string|in:text,email,textarea,button',
-            'name' => 'required|string|max:255',
-            'class' => 'nullable|string|max:255',
-            'required' => 'required|boolean',
-            'order' => 'required|integer',
+            'fields' => 'required|array|min:1',
+            'fields.*.type' => 'required|string|in:text,email,textarea,button',
+            'fields.*.name' => 'required|string|max:255',
+            'fields.*.class' => 'nullable|string|max:255',
+            'fields.*.required' => 'required|boolean',
+            'fields.*.order' => 'required|integer',
         ]);
 
-        $field = $form->fields()->create($validated);
+        $createdFields = [];
 
-        return response()->json($field, 201);
+        foreach ($validated['fields'] as $fieldData) {
+            $createdFields[] = $form->fields()->create($fieldData);
+        }
+
+        return response()->json([
+            'message' => 'Fields created successfully.',
+            'fields' => $createdFields,
+        ], 201);
     }
 }

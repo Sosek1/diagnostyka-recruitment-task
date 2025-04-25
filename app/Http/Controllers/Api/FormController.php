@@ -19,12 +19,15 @@ class FormController extends Controller
 
         $form = Form::create($validated);
 
-        return response()->json($form, 201);
+        return response()->json([
+            'message' => 'Form created successfully.',
+            'form_id' => $form->id,
+        ], 201);
     }
 
     public function show(Form $form)
     {
-        $form->load('fields'); // eager loading pól
+        $form->load('fields');
 
         return response()->json($form);
     }

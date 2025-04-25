@@ -7,13 +7,13 @@ Route::get('/', function () {
     return Inertia::render('welcome');
 })->name('home');
 
-Route::get('/forms', function () {
+Route::get('/forms-list', function () {
     return Inertia::render('forms');
-})->name('forms');
+})->name('forms-list');
 
-Route::get('/forms/add', function () {
+Route::get('/forms-list/add', function () {
     return Inertia::render('addForm');
-})->name('forms.add');
+})->name('forms-list.add');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('dashboard', function () {
