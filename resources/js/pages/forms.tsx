@@ -6,7 +6,7 @@ import {
     TableHeader,
     TableRow
 } from "@/components/ui/table";
-import { Plus, Eye} from "lucide-react";
+import { Plus, Eye, Trash } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useFetchForms } from "@/hooks/useFetchForms";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -14,19 +14,27 @@ import { toast } from "sonner"
 import {Toaster} from "@/components/ui/sonner";
 import * as React from "react";
 import { Link } from '@inertiajs/react';
+import { useDeleteForm } from "@/hooks/useDeleteForm";
 
 export default function Forms() {
-    const { forms, loading, error } = useFetchForms();
+    const { forms, loading, error, refetch } = useFetchForms();
+    const { deleteForm, loading: deleteLoading, error: deleteError } = useDeleteForm(refetch);
 
     if (error) {
         toast("Error loading forms: " + error);
     }
 
+    const handleDelete = (id) => {
+        if (confirm("Are you sure you want to delete this form?")) {
+            deleteForm(id);
+        }
+    };
+
     return (
         <main className="w-full h-full flex flex-col">
             <div className="w-full p-4 flex justify-between items-center">
                 <h1 className="text-2xl">Forms list</h1>
-                <Link href={route('forms-list.add')}>
+                <Link href={route('add')}>
                     <Button className="cursor-pointer">
                         <Plus />
                         <span className="ml-2">Add form</span>
@@ -68,8 +76,16 @@ export default function Forms() {
                                             ))}
                                         </ul>
                                     </TableCell>
-                                    <TableCell>
-                                        <Eye className="cursor-pointer"/>
+                                    <TableCell className="h-full flex gap-2 justify-center items-center">
+                                        <Link href={route('example', { id: form.id })}>
+                                            <Eye className="cursor-pointer" />
+                                        </Link>
+                                        <button
+                                            onClick={() => handleDelete(form.id)}
+                                            disabled={deleteLoading}
+                                        >
+                                            <Trash className="cursor-pointer" />
+                                        </button>
                                     </TableCell>
                                 </TableRow>
                             ))}

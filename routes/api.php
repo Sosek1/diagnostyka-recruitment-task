@@ -11,6 +11,7 @@ Route::prefix('forms')->group(function () {
     Route::get('/', [FormController::class, 'index']);
     Route::post('/', [FormController::class, 'store']);
     Route::get('/{form}', [FormController::class, 'show']);
+    Route::delete('/{form}', [FormController::class, 'destroy']);
 
     Route::post('/{form}/fields', [FormFieldController::class, 'store']);
     Route::get('/{form}/rendered', [FormRenderController::class, 'render']);

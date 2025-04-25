@@ -37,4 +37,15 @@ class FormController extends Controller
 
         return response()->json($form);
     }
+
+    public function destroy(Form $form)
+    {
+        $form->fields()->delete();
+
+        $form->delete();
+
+        return response()->json([
+            'message' => 'Form deleted successfully.',
+        ], 200);
+    }
 }

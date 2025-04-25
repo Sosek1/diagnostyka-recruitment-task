@@ -3,20 +3,20 @@
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-Route::get('/', function () {
-    return Inertia::render('welcome');
-})->name('home');
 
-Route::get('/forms-list', function () {
+
+Route::get('/', function () {
     return Inertia::render('forms');
 })->name('forms-list');
 
-Route::get('/forms-list/add', function () {
+Route::get('/add', function () {
     return Inertia::render('addForm');
-})->name('forms-list.add');
+})->name('add');
 
-Route::get('/example', function () {
-    return Inertia::render('example');
+Route::get('/example/{id}', function ($id) {
+    return Inertia::render('example', [
+        'formId' => $id
+    ]);
 })->name('example');
 
 Route::middleware(['auth', 'verified'])->group(function () {
