@@ -34,7 +34,7 @@ export default function BuildFieldForm({onAdd} : TBuildFieldFormProps) {
             type: "text",
             name: "",
             class: "",
-            required: true
+            required: true,
         },
     })
 

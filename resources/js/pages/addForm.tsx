@@ -1,17 +1,13 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import BuildFieldForm from "@/components/BuildFieldForm";
 import FormFieldsPreviewTable from "@/components/FormFieldsPreviewTable";
 import { Button } from "@/components/ui/button"
-
-export type TFormField = {
-    type: "text" | "email" | "textarea" | "button";
-    name: string;
-    class: string;
-    required: boolean;
-};
+import { TFormField } from "@/types/form";
+import CreateFormModal from "@/components/BuildFormModal";
 
 export default function Forms() {
-    const [formFields, setFormFields] = useState([]);
+    const [formFields, setFormFields] = useState<TFormField[]>([]);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const handleRemove = (index: number) => {
         setFormFields((prev) => prev.filter((_, i) => i !== index));
@@ -52,10 +48,11 @@ export default function Forms() {
                             onMoveUp={handleMoveUp}
                             onMoveDown={handleMoveDown}
                         />
-                        {formFields.length > 0 && <Button className="w-fit">Save form</Button>}
+                        {formFields.length > 0 && <Button className="w-fit" onClick={() => setIsModalOpen(true)}>Create form</Button>}
                     </div>
                 </div>
             </div>
+            <CreateFormModal fields={formFields} open={isModalOpen} onOpenChange={setIsModalOpen} />
         </main>
     )
 }
