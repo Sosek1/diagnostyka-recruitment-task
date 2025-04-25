@@ -15,6 +15,10 @@ Route::get('/forms-list/add', function () {
     return Inertia::render('addForm');
 })->name('forms-list.add');
 
+Route::get('/example', function () {
+    return Inertia::render('example');
+})->name('example');
+
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('dashboard', function () {
         return Inertia::render('dashboard');
