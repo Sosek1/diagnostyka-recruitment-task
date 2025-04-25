@@ -38,7 +38,7 @@ export const useCreateForm = () => {
 
             setSuccessMessage(message);
         } catch (err: any) {
-            setError(err.response?.data?.message || "Wystąpił błąd przy tworzeniu formularza.");
+            setError(err.response?.data?.message || "Error occured during creating a form");
         } finally {
             setLoading(false);
         }

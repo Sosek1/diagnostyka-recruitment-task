@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
 import {TFormField} from "@/types/form";
+import { toast } from "sonner"
 
 import {
     Form,
@@ -47,10 +48,13 @@ const CreateFormModal: React.FC<Props> = ({ fields, open, onOpenChange }) => {
     });
 
     const onSubmit = async (values: FormSchemaType) => {
-        await createForm(values, fields);
+        const result = await createForm(values, fields);
         if (!error) {
-            onOpenChange(false);
+            toast("Form has been created");
             form.reset();
+            onOpenChange(false);
+        } else {
+            toast("Could not create a form");
         }
     };
 
@@ -105,13 +109,12 @@ const CreateFormModal: React.FC<Props> = ({ fields, open, onOpenChange }) => {
                             )}
                         />
 
-                        <Button type="submit" disabled={loading} className="w-full flex items-center justify-center">
+                        <Button type="submit" disabled={loading} className="w-full flex items-center justify-center cursor-pointer">
                             {loading && <Loader2 className="w-4 h-4 animate-spin mr-2" />}
                             {loading ? "Creating..." : "Save form"}
                         </Button>
 
                         {error && <p className="text-red-500 text-sm">{error}</p>}
-                        {successMessage && <p className="text-green-500 text-sm">{successMessage}</p>}
                     </form>
                 </Form>
             </DialogContent>

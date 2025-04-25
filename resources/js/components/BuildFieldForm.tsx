@@ -18,7 +18,7 @@ import { Input } from "@/components/ui/input";
 const formSchema = z.object({
     type: z.enum(["text", "email", "textarea", "button"]),
     name: z.string().min(4).max(50),
-    class: z.string().min(4).max(50),
+    class: z.string().optional(),
     required: z.boolean(),
 })
 
