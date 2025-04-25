@@ -15,4 +15,6 @@ Route::prefix('forms')->group(function () {
 
     Route::post('/{form}/fields', [FormFieldController::class, 'store']);
     Route::get('/{form}/rendered', [FormRenderController::class, 'render']);
+
+    Route::post('/submit-form', [FormController::class, 'submit']);
 });

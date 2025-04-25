@@ -13,6 +13,7 @@ class FormRenderer
         $title = e($form->name);
         $description = e($form->description);
 
+
         $html = <<<HTML
             <div class="max-w-xl mx-auto p-4 bg-white rounded-md shadow-md space-y-4">
                 <h2 class="text-2xl font-bold text-gray-800">{$title}</h2>
@@ -20,6 +21,8 @@ class FormRenderer
 
                 <form action="{$form->action_url}" method="POST" class="space-y-4">
         HTML;
+
+        $html .= csrf_field();
 
         foreach ($form->fields as $field) {
             $required = $field->required ? 'required' : '';
