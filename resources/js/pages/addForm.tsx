@@ -48,7 +48,7 @@ export default function Forms() {
                             onMoveUp={handleMoveUp}
                             onMoveDown={handleMoveDown}
                         />
-                        {formFields.length > 0 && <Button className="w-fit" onClick={() => setIsModalOpen(true)}>Create form</Button>}
+                        {formFields.length > 0 && <Button className="w-fit cursor-pointer" onClick={() => setIsModalOpen(true)}>Create form</Button>}
                     </div>
                 </div>
             </div>

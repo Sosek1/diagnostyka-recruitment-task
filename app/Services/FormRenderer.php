@@ -10,8 +10,15 @@ class FormRenderer
     {
         $form->load('fields');
 
+        $title = e($form->name);
+        $description = e($form->description);
+
         $html = <<<HTML
-            <form action="{$form->action_url}" method="POST" class="space-y-4 p-4 bg-white rounded-md shadow-md max-w-lg mx-auto">
+            <div class="max-w-xl mx-auto p-4 bg-white rounded-md shadow-md space-y-4">
+                <h2 class="text-2xl font-bold text-gray-800">{$title}</h2>
+                <p class="text-gray-600">{$description}</p>
+
+                <form action="{$form->action_url}" method="POST" class="space-y-4">
         HTML;
 
         foreach ($form->fields as $field) {

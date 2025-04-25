@@ -53,7 +53,7 @@ export default function BuildFieldForm({onAdd} : TBuildFieldFormProps) {
                         <FormItem>
                             <FormLabel>Field type</FormLabel>
                             <FormControl>
-                                <Select {...field}>
+                                <Select value={field.value} onValueChange={field.onChange}>
                                     <SelectTrigger className="w-full">
                                         <SelectValue placeholder="Select input type" />
                                     </SelectTrigger>
@@ -91,7 +91,7 @@ export default function BuildFieldForm({onAdd} : TBuildFieldFormProps) {
                             <FormControl>
                                 <Input placeholder="Enter input class name" {...field} />
                             </FormControl>
-                            <FormDescription>Provide class name which let's you apply your own styles for each input field</FormDescription>
+                            <FormDescription>Provide tailwind class names which let's you apply your own styles for each input field</FormDescription>
                             <FormMessage />
                         </FormItem>
                     )}
