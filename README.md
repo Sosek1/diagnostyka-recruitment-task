@@ -13,6 +13,8 @@ bartoszsosin3@gmail.com
 ### 5. Run app in dev mode
 `composer run dev`
 
+**app runs on localhost:8000**
+
 ## Functionalities
 
 ### Forms list
