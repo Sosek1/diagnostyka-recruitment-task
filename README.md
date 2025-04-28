@@ -21,6 +21,8 @@ bartoszsosin3@gmail.com
 - list forms and it's fields
 - enables to view example form implementation
 - make deleting forms possible with refetching after deleting
+![image](https://github.com/user-attachments/assets/e414accf-2138-4668-a8f1-28644f640826)
+
 
 ### Add form 
 - form allowing to build form field 
@@ -29,6 +31,9 @@ bartoszsosin3@gmail.com
 - "Create form" button which displays modal
 - in modal user can give form name, description and action url
 - user is constrained to add single button type field
+![image](https://github.com/user-attachments/assets/f39e497c-dd20-4845-8923-2d2f6fb94869)
+![image](https://github.com/user-attachments/assets/830e022a-6d18-4173-8a8b-c5d744502e89)
+
 
 ### Form example
 - example implementation of form
@@ -39,6 +44,10 @@ bartoszsosin3@gmail.com
 
 I've created logic for storing form data of whatever shape and it works but in laravel simple 
 form with action prop crashes app. I might not handle it correctly but wanted to hold on task specyfication.
+  
+#### Example form with custom styles:
+![exmaple-form](https://github.com/user-attachments/assets/359ba7fa-be90-40f3-9d10-ddee186ea041)
+
 
 ## Laravel + React Starter Kit
 A modern Laravel 12 + React 19 application powered by Inertia.js, Tailwind CSS, TypeScript, and Vite.
